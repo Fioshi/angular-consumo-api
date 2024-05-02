@@ -1,0 +1,17 @@
+<form [formGroup]="formGroup" (ngSubmit)="adicionar()">
+    <p>
+        Titulo: <input type="text" formControlName="titulo" >
+    </p>
+    <p>
+        Descrição: <input type="text" formControlName="descricao">
+    </p>
+    <button type="submit" >Adicionar</button>
+</form>
+
+<p>Teste</p>
+<ul>
+    @for (item of tarefas; track $index){
+       <li>  {{item.id}} - {{item.titulo}} - {{item.descricao}}  </li>
+       <input type="button" value="remover" (click)="remover(item.id)">
+    }
+</ul>

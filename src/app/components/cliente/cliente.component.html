@@ -1,0 +1,21 @@
+<section class="forms" >
+  <form [formGroup]="clientForm" (ngSubmit)="inserir()">
+    <p>
+      Nome: <input type="text" formControlName="nome">
+    </p>
+    <p>
+      Telefone: <input type="text" formControlName="telefone">
+    </p>
+    <button type="submit">Enviar</button>
+  </form>
+  
+  
+  <h2>Listar </h2>
+  
+  <ul>
+    @for (item of clientes; track $index){
+       <li>  {{item.id}} - {{item.nome}} - {{item.telefone}}  </li>
+       <input type="button" value="remover" (click)="remover(item.id)">
+    }
+  </ul>
+</section>
