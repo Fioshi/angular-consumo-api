@@ -1,21 +1,30 @@
-<section class="forms" >
-  <form [formGroup]="clientForm" (ngSubmit)="inserir()">
-    <p>
-      Nome: <input type="text" formControlName="nome">
-    </p>
-    <p>
-      Telefone: <input type="text" formControlName="telefone">
-    </p>
-    <button type="submit">Enviar</button>
+<section class="forms container-fluid">
+  <form [formGroup]="clientForm" (ngSubmit)="inserir()" class="form">
+    Nome: <input class="input" type="text" formControlName="nome">
+    Telefone: <input class="input" type="text" formControlName="telefone">
+    <button type="submit" class="btn btn-success">Enviar</button>
   </form>
-  
-  
-  <h2>Listar </h2>
-  
-  <ul>
-    @for (item of clientes; track $index){
-       <li>  {{item.id}} - {{item.nome}} - {{item.telefone}}  </li>
-       <input type="button" value="remover" (click)="remover(item.id)">
-    }
-  </ul>
+  <table class="table w-50 p-3  ">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Telefone</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of clientes; track $index){
+      <tr>
+        <th scope="row">{{item.id}}</th>
+        <td>{{item.nome}}</td>
+        <td>{{item.telefone}}</td>
+        <td>
+          <a href="excluir/{{item.id}}"><input class="btn btn-danger" type="button" value="remover"></a>
+          <a href="cliente/{{item.id}}"><button class="btn btn-warning">editar</button></a>
+        </td>
+      </tr>
+    } 
+    </tbody>
+  </table>
 </section>

@@ -18,16 +18,36 @@ export class ClienteService {
     return this.http.get<Cliente[]>(this.clientUrl) as Observable<Cliente[]>
   }
 
-  remover(id:string){
-    const cliente = this.clientes.find(c => c.id == id);
+  getById(id: string){
+    return this.http.get(`${this.clientUrl}/${id}`) as Observable<Cliente>
+  }
 
-    if(cliente){
-       const index = this.clientes.indexOf(cliente);
-       this.clientes.splice(index,1);
+  remover(id:string){
+    // const cliente = this.clientes.find(c => c.id == id);
+
+    // if(cliente){
+    //    const index = this.clientes.indexOf(cliente);
+    //    this.clientes.splice(index,1);
+    // }
+
+    return this.http.delete(`${this.clientUrl}/${id}`)
+
+  }
+
+  httpHeader = {
+    headers:{
+      "content-Type":"application/json"
     }
+  };
+
+  atualizar(cliente: Cliente){
+    return this.http.put(`${this.clientUrl}/${cliente.id}`,cliente, this.httpHeader);
   }
 
   adicionar(cliente:Cliente){
-    this.clientes.push(cliente);
-  }
+    /*
+    *  Define o conteudo que sera enviado no POST
+    */
+    return this.http.post(this.clientUrl, cliente, this.httpHeader)
+  } 
 }

@@ -14,6 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   styleUrl: './cliente.component.css'
 })
 export class ClienteComponent {
+
+  optionDelete: boolean = false;
   clientes: Cliente[] = [];
   clientForm: FormGroup = new FormGroup({})
 
@@ -32,14 +34,16 @@ export class ClienteComponent {
         telefone: this.clientForm.value.telefone,
         id: this.generateRandomString(6)
       }
-      this.clienteService.adicionar(clienteNovo)
       this.clientForm.reset()
+
+      this.clientes.push(clienteNovo);
+      this.clienteService.adicionar(clienteNovo).subscribe()
     }
   }
 
   remover(id: string){
-    this.clienteService.remover(id);
-    
+    this.clientes = this.clientes.filter((item)=> item.id !== id);
+    this.clienteService.remover(id).subscribe();
   }
 
   listar(): void {

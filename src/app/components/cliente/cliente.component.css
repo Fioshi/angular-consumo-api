@@ -1,0 +1,23 @@
+.form{
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+}
+
+.btn {
+    margin-left: 1rem;
+}
+
+.input{
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.ancora{
+    text-decoration: none;
+    color: white;
+}
+
+.list-component {
+    list-style: none;
+}

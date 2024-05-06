@@ -1,0 +1,16 @@
+.options {
+    align-items: center;
+    justify-content: center;
+}
+
+.main-opcoes {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+}
+
+.question {
+    font-size: 1.5rem;
+}
